@@ -6,10 +6,10 @@ void setup() {
   size(900, 600);
   surface.setTitle("Stars Sound");
   
-  mainR = new Main();
-  mainR.run(new ControlP5(this));
+  mainR = new Main(this);
+  mainR.run();
 }
 
 void draw() {
-  background(20);
+  mainR.update();
 }

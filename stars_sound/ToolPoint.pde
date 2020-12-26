@@ -17,7 +17,7 @@ public abstract class ToolPoint {
   // Callback to use when the button is clicked
   CallbackListener listener = new CallbackListener() {
     public void controlEvent(CallbackEvent theEvent) {
-      println("ToolPoint button clicked" );
+      println("ToolPoint button clicked");
       changePoint();
     }
   };

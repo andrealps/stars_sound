@@ -14,6 +14,5 @@ public class BigPoint extends ToolPoint {
      .setImages(image, image, image)
      .updateSize();     
      ;
-
   }
 }

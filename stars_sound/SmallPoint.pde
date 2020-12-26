@@ -14,6 +14,5 @@ public class SmallPoint extends ToolPoint {
      .setImages(image, image, image)
      .updateSize();     
      ;
-
   }
 }

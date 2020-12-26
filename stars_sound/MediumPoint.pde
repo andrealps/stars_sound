@@ -14,6 +14,5 @@ public class MediumPoint extends ToolPoint {
      .setImages(image, image, image)
      .updateSize();     
      ;
-
   }
 }

@@ -5,7 +5,7 @@ public class UploadButton extends InterfaceButton {
   
   @Override
   public void createButton(){
-    image = loadImage("data/upload.png");
+    image = loadImage("data/InterfaceButtons/upload.png");
      
     main.getControlP5().addButton("upload")
      .setValue(2)

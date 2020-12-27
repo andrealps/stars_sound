@@ -5,7 +5,7 @@ public class MediumPoint extends ToolPoint {
   
   @Override
   public void createPoint(){
-    image = loadImage("data/medium.png");
+    image = loadImage("data/ToolPoint/medium.png");
     
     main.getControlP5().addButton("medium")
      .setValue(1)

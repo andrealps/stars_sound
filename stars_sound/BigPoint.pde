@@ -5,7 +5,7 @@ public class BigPoint extends ToolPoint {
   
   @Override
   public void createPoint(){
-    image = loadImage("data/big.png");
+    image = loadImage("data/ToolPoint/big.png");
     
     main.getControlP5().addButton("big")
      .setValue(0)

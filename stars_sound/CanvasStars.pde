@@ -3,7 +3,10 @@ public class CanvasStars {
   public static final int WIDTH_CANVAS = 900;
   public static final int HEIGHT_CANVAS = 600;
   
+  // Background image
   private PImage bGimage = loadImage("data/wallpaper.jpg");
+  
+  // Stars Manager
   private StarsManager starsManager = StarsManager.getInstance();
   
   public void draw(Main main){
@@ -17,12 +20,16 @@ public class CanvasStars {
     stroke(255);
     fill(255);
     
-    // Draw star if mouse is pressed
-    drawStarIfPressed(main.getTPSelected());
     // Draw previous stars
     drawPreviousStars();
-    // Show point where the mouse is pointing
-    showSelectedToolSize(main.getTPSelected());
+    
+    // Number of stars < MAX_NUM_STARS
+    if (canDrawNewStar()){
+      // Draw star if mouse is pressed
+      drawStarIfPressed(main.getTPSelected());
+      // Show point where the mouse is pointing
+      showSelectedToolSize(main.getTPSelected());
+    }
   }
   
   private void showSelectedToolSize(ToolPoint tP){
@@ -35,6 +42,11 @@ public class CanvasStars {
        circle(mouseX, mouseY, tP.getSize());
        addStar(mouseX, mouseY, tP.getSize());
     }
+  }
+  
+  // Return true if there are less stars in canvas than MAX_NUM_STARS
+  private boolean canDrawNewStar(){
+    return starsManager.getStars().size() < StarsManager.MAX_NUM_STARS;
   }
   
   private void drawPreviousStars(){
@@ -72,5 +84,9 @@ public class CanvasStars {
     stroke(45);
     strokeWeight(2.3);
     line(0, START_HEIGHT_CANVAS-2, width, START_HEIGHT_CANVAS-2);
+  }
+  
+  public void deleteLastStar(){
+    starsManager.deleteLastStar();
   }
 }

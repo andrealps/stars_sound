@@ -72,6 +72,10 @@ public class Main {
     canvas.setBackgroundImage(image);
   }
   
+  public void deleteLastStar(){
+    canvas.deleteLastStar();
+  }
+  
   /****************************** BUTTONS ********************************/
   private void createButtons(){
     // Tool points
@@ -99,6 +103,8 @@ public class Main {
     interfaceButtons = new ArrayList<InterfaceButton>();
     // Upload button (image)
     interfaceButtons.add(new UploadButton(this));
-    // TODO: download button (xml)
+    // Delete button
+    interfaceButtons.add(new DeleteButton(this));
+    // TODO: download button (Ruby textfile)
   }
 }

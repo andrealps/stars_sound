@@ -9,7 +9,7 @@ public class UploadButton extends InterfaceButton {
      
     main.getControlP5().addButton("upload")
      .setValue(2)
-     .setPosition(850, 24)
+     .setPosition(850, 15)
      .onClick(listener)
      .setImages(image, image, image)
      .updateSize();
@@ -32,6 +32,7 @@ public class UploadButton extends InterfaceButton {
     if (isValidImage(path)) {
       PImage image = loadImage(path);
       main.changeBackgroundImage(image);
+      println("Background image changed " + path);
     }
   }
   }

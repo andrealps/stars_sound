@@ -9,7 +9,7 @@ public class SmallPoint extends ToolPoint {
     
     main.getControlP5().addButton("small")
      .setValue(2)
-     .setPosition(115, 24)
+     .setPosition(115, 19)
      .onClick(listener)
      .setImages(image, image, image)
      .updateSize();     

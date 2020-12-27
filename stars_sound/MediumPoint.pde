@@ -9,7 +9,7 @@ public class MediumPoint extends ToolPoint {
     
     main.getControlP5().addButton("medium")
      .setValue(1)
-     .setPosition(70, 17)
+     .setPosition(70, 12)
      .onClick(listener)
      .setImages(image, image, image)
      .updateSize();     

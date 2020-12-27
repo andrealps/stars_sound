@@ -9,7 +9,7 @@ public class BigPoint extends ToolPoint {
     
     main.getControlP5().addButton("big")
      .setValue(0)
-     .setPosition(10, 10)
+     .setPosition(10, 5)
      .onClick(listener)
      .setImages(image, image, image)
      .updateSize();     

@@ -21,7 +21,6 @@ public class Main {
   public void run(){
     // Create buttons
     createButtons();
-    
     // Create canvas
     createCanvas();
   }

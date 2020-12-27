@@ -2,6 +2,10 @@ public class Main {
   private PApplet app;
   private ControlP5 cp5;
   
+  // Title
+  private PFont fontTitle;
+  private PImage iconTitle;
+  
   // Points for drawing 
   private ArrayList<ToolPoint> toolPoints;
   private ToolPoint tpSelected;
@@ -19,17 +23,20 @@ public class Main {
   
   // Called by setUp
   public void run(){
-    // Set Title
-    showTitle();
     // Create buttons
     createButtons();
     // Create canvas
     createCanvas();
+    
+    fontTitle = loadFont("StarsSoundFont.vlw");
+    iconTitle = loadImage("musical-notes.png");
   }
   
   // Called by draw
   public void update(){
     canvas.draw();
+    // Show Title
+    showTitle();
   }
   
   public ControlP5 getControlP5(){ return cp5; }
@@ -38,7 +45,22 @@ public class Main {
   
   /****************************** TITLE *********************************/
   private void showTitle(){
-    
+    // Show "Stars Sound"
+    showTextTitle();
+    // Show musical notes icon
+    showIconTitle();
+  }
+  
+  private void showTextTitle(){
+    fill(#C7D9FC);
+    textFont(fontTitle);
+    textSize(35);
+    text("Stars Sound", 290, 43);
+  }
+  
+  private void showIconTitle(){
+    imageMode(CENTER);
+    image(iconTitle, 530, 32);
   }
   
   /****************************** CANVAS ********************************/  
@@ -54,7 +76,7 @@ public class Main {
   private void createButtons(){
     // Tool points
     createToolPoints();
-    // Interface buttons
+    // Interface buttonsz
     createInterfaceButtons();
   }  
   

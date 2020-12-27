@@ -29,8 +29,8 @@ public class CanvasStars {
   }
   
   private void showLineSeparator(){
-    stroke(40);
-    strokeWeight(2);
+    stroke(45);
+    strokeWeight(2.3);
     line(0, START_HEIGHT_CANVAS-2, width, START_HEIGHT_CANVAS-2);
   }
 }

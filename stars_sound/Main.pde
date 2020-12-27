@@ -34,14 +34,14 @@ public class Main {
   
   // Called by draw
   public void update(){
-    canvas.draw();
+    canvas.draw(this);
     // Show Title
     showTitle();
   }
   
   public ControlP5 getControlP5(){ return cp5; }
   public PApplet getApp(){ return app; }
-  
+  public ToolPoint getTPSelected(){ return tpSelected; }
   
   /****************************** TITLE *********************************/
   private void showTitle(){
@@ -86,6 +86,8 @@ public class Main {
     toolPoints.add(new BigPoint(this));
     toolPoints.add(new MediumPoint(this));
     toolPoints.add(new SmallPoint(this));
+    
+    setToolPointSelected(toolPoints.get(0));
   }
   
   public void setToolPointSelected(ToolPoint tP){

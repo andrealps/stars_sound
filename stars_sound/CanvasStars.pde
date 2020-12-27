@@ -4,16 +4,56 @@ public class CanvasStars {
   public static final int HEIGHT_CANVAS = 600;
   
   private PImage bGimage = loadImage("data/wallpaper.jpg");
+  private StarsManager starsManager = StarsManager.getInstance();
   
-  public void draw(){
+  public void draw(Main main){
     background(20);
+    
+    // Background image
     showBackgroundImage();
+    // Interface separator
     showLineSeparator();
+    
+    stroke(255);
+    fill(255);
+    
+    // Draw star if mouse is pressed
+    drawStarIfPressed(main.getTPSelected());
+    // Draw previous stars
+    drawPreviousStars();
+    // Show point where the mouse is pointing
+    showSelectedToolSize(main.getTPSelected());
+  }
+  
+  private void showSelectedToolSize(ToolPoint tP){
+    if (mouseY > START_HEIGHT_CANVAS+tP.getSize()/2)
+      circle(mouseX, mouseY, tP.getSize());
+  }
+  
+  private void drawStarIfPressed(ToolPoint tP){
+    if (mousePressed && mouseButton == LEFT && mouseY > START_HEIGHT_CANVAS+tP.getSize()/2){
+       circle(mouseX, mouseY, tP.getSize());
+       addStar(mouseX, mouseY, tP.getSize());
+    }
+  }
+  
+  private void drawPreviousStars(){
+    fill(255);
+    ArrayList<Star> stars = starsManager.getStars();
+    
+    for (int i = 0; i < stars.size(); i++){
+      if (i != 0){
+        line(stars.get(i-1).getX(), stars.get(i-1).getY(), stars.get(i).getX(), stars.get(i).getY());
+      }
+      circle(stars.get(i).getX(), stars.get(i).getY(), stars.get(i).getSize());
+    }
+  }
+  
+  private void addStar(int mouseXCoord, int mouseYCoord, int tPSize){
+    starsManager.addStar(new Star(mouseXCoord, mouseYCoord, tPSize));
   }
  
-  public void setBackgroundImage(PImage bGimage){
-    this.bGimage = bGimage;
-  }
+  public void setBackgroundImage(PImage bGimage){ this.bGimage = bGimage; }
   
   private void showBackgroundImage(){
     imageMode(CENTER);

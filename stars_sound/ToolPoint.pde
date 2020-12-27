@@ -9,6 +9,7 @@ public abstract class ToolPoint {
   }
   
   protected abstract void createPoint();
+  protected abstract int getSize();
   
   public void changePoint(){
     main.setToolPointSelected(this);

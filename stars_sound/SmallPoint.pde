@@ -15,4 +15,7 @@ public class SmallPoint extends ToolPoint {
      .updateSize();     
      ;
   }
+  
+  @Override
+  public int getSize(){ return 20; }
 }

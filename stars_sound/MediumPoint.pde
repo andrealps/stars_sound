@@ -15,4 +15,7 @@ public class MediumPoint extends ToolPoint {
      .updateSize();     
      ;
   }
+  
+  @Override
+  public int getSize(){ return 35; }
 }

@@ -15,4 +15,7 @@ public class BigPoint extends ToolPoint {
      .updateSize();     
      ;
   }
+  
+  @Override
+  public int getSize(){ return 50; }
 }

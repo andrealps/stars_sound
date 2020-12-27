@@ -19,6 +19,8 @@ public class Main {
   
   // Called by setUp
   public void run(){
+    // Set Title
+    showTitle();
     // Create buttons
     createButtons();
     // Create canvas
@@ -32,6 +34,12 @@ public class Main {
   
   public ControlP5 getControlP5(){ return cp5; }
   public PApplet getApp(){ return app; }
+  
+  
+  /****************************** TITLE *********************************/
+  private void showTitle(){
+    
+  }
   
   /****************************** CANVAS ********************************/  
   private void createCanvas(){

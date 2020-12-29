@@ -106,5 +106,20 @@ public class Main {
     // Delete button
     interfaceButtons.add(new DeleteButton(this));
     // TODO: download button (Ruby textfile)
+    interfaceButtons.add(new PlayButton(this));
   }
+
+
+
+
+
+
+  /****************************** PLAY ********************************/
+  public void play(){
+    StarsManager starsManager = StarsManager.getInstance();
+    for(Star s: starsManager.getStars()){
+      //app.getDo().play();
+    }
+  }
+
 }

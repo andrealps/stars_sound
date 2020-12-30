@@ -109,17 +109,21 @@ public class Main {
     interfaceButtons.add(new PlayButton(this));
   }
 
-
-
-
-
+  /******** Send notes to Sonic pi ********/
+  void sendMessageToSP(float x, float y, float size) {
+    OscMessage messageToSend = new OscMessage("/message");
+    messageToSend.add(x); 
+    messageToSend.add(y); 
+    messageToSend.add(size); 
+    oscP5.send(messageToSend, sonicPi);
+    println(messageToSend);
+  }
 
   /****************************** PLAY ********************************/
   public void play(){
-    StarsManager starsManager = StarsManager.getInstance();
-    for(Star s: starsManager.getStars()){
-      //app.getDo().play();
-    }
+    StarsManager st = StarsManager.getInstance();
+    for (Star s: st.getStars())
+      sendMessageToSP(s.getX(), s.getY(), s.getSize());
   }
 
 }

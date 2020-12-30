@@ -1,14 +1,10 @@
 live_loop :osc do
-  nv=sync "/osc:127.0.0.1:52076/message"
+  nv=sync "/osc:127.0.0.1:<puerto>/message"
   # en <puerto> escribir el puerto de la ventana de ejecucion de processing de java
   
-  x=nv[0].to_f
-  y=nv[1].to_f
-  size=nv[2].to_f
-  
-  print "X: " + x.to_s
-  print "Y: " + y.to_s
+  size=nv[0].to_f
   print "Size: " + size.to_s
+  time=nv[1].to_f
   
   doNote=261.63
   miNote=329.628
@@ -27,15 +23,7 @@ live_loop :osc do
     print "Incorrect weight"
   end
   
-  play hz_to_midi(noteToPlay)
-  sleep 3
-  
+  use_bpm 10000
+  play hz_to_midi(noteToPlay), release:time
   
 end
-
-
-define :escalar do |oldMin,oldMax,newMin,newMax,oldValue|
-  newValue = (((oldValue - oldMin) * (newMax - newMin)) / (oldMax - oldMin)) + newMin
-  return newValue
-end
-

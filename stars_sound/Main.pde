@@ -110,20 +110,57 @@ public class Main {
   }
 
   /******** Send notes to Sonic pi ********/
-  void sendMessageToSP(float x, float y, float size) {
+  void sendMessageToSP(float size, int time) {
     OscMessage messageToSend = new OscMessage("/message");
-    messageToSend.add(x); 
-    messageToSend.add(y); 
     messageToSend.add(size); 
+    messageToSend.add((float)time); 
     oscP5.send(messageToSend, sonicPi);
     println(messageToSend);
+    try{
+      Thread.sleep(time);//Wait until the note is already played
+    }catch(Exception e){}
   }
 
   /****************************** PLAY ********************************/
   public void play(){
     StarsManager st = StarsManager.getInstance();
-    for (Star s: st.getStars())
-      sendMessageToSP(s.getX(), s.getY(), s.getSize());
+    boolean isFirst=true;
+    Star lastStar=null;
+    for(int i=0;i<5;i++){
+      for (Star s: st.getStars()){
+        if(isFirst){
+          isFirst=false;
+          lastStar=s;
+          sendMessageToSP(s.getSize(), 300);
+        } else{
+          int distance=calculateDistanceBetweenTwoStars(lastStar,s);
+          System.out.println("Distance: "+distance);
+          int time=normalize(distance);
+          System.out.println("Time: "+time);
+          sendMessageToSP(s.getSize(), time);
+          lastStar=s;
+        }
+      }
+    try{
+      Thread.sleep(500);//Wait until the note is already played
+    }catch(Exception e){}
+    }
+  }
+
+  /**
+  * Accepts values between 0 and 1040 (Possible distances between stars)
+  * Returns values between 100 and 400 (Possible sound durations)
+  */
+  public int normalize(int num){
+    return 100+(int)((num/(1040.0))*500);
+  }
+
+  public int calculateDistanceBetweenTwoStars(Star s1, Star s2){
+      int x1=s1.getX();
+      int x2=s2.getX();
+      int y1=s1.getY();
+      int y2=s2.getY();
+	    return (int)Math.sqrt((x2-x1)*(x2-x1) + (y2-y1)*(y2-y1));
   }
 
 }

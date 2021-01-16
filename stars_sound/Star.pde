@@ -19,4 +19,8 @@ public class Star {
   public boolean equals(Star other){
     return x == other.getX() && y == other.getY();
   }
+  
+  public String toString(){
+    return this.getX() + ", " + this.getY() + ", " + this.getSize();
+  }
 }

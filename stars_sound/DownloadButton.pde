@@ -10,7 +10,7 @@ public class DownloadButton extends InterfaceButton {
     main.getControlP5().addButton("download")
       .setValue(2)
       //TODO Cambiar posicion
-      .setPosition(650, 15)
+      .setPosition(850, 15)
       .onClick(listener)
       .setImages(image, image, image)
       .updateSize();

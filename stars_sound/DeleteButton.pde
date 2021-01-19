@@ -9,7 +9,7 @@ public class DeleteButton extends InterfaceButton {
      
     main.getControlP5().addButton("delete")
      .setValue(2)
-     .setPosition(800, 15)
+     .setPosition(750, 15)
      .onClick(listener)
      .setImages(image, image, image)
      .updateSize();

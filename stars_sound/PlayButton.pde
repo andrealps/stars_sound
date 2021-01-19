@@ -9,7 +9,7 @@ public class PlayButton extends InterfaceButton {
      
     main.getControlP5().addButton("play")
      .setValue(2)
-     .setPosition(750, 15)
+     .setPosition(650, 15)
      .onClick(listener)
      .setImages(image, image, image)
      .updateSize();

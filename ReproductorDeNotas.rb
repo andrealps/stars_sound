@@ -24,6 +24,8 @@ live_loop :osc do
   end
   
   use_bpm 10000
-  play hz_to_midi(noteToPlay), release:time
+  use_synth :piano
+  play hz_to_midi(noteToPlay), release:time, amp:1
+  sample :ambi_piano, amp:0.1, release:time
   
 end

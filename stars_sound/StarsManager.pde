@@ -33,4 +33,14 @@ public static class StarsManager {
     }
     return false;
   }
+  
+  public String toString(){
+    StringBuilder text = new StringBuilder();
+    for (Star star: stars){
+      text.append(star.toString());
+      text.append("\r");
+    }
+    return text.toString();
+  }
+
 }

@@ -166,7 +166,7 @@ public class Main {
     cabecera.append("\r\nmy_melody.each_with_index do |elemento, index|");
     cabecera.append("\r\n  play hz_to_midi(elemento), release:my_sleep[index], amp:1");
     cabecera.append("\r\n  sample :ambi_piano, amp:0.1, release:my_sleep[index]");
-    cabecera.append("\r\n  sleep(my_sleep[index])");
+    cabecera.append("\r\n  sleep(my_sleep[index]/2)");
     cabecera.append("\r\nend");
     return cabecera.toString();
   }

@@ -191,13 +191,21 @@ public class Main {
           isFirst=false;
           lastStar=s;
           notas.append(""+s.getSize()+",");
-          pausa.append("3,");
+          pausa.append("300,");
         } else {
           int distance=calculateDistanceBetweenTwoStars(lastStar, s);
           System.out.println("Distance: "+distance);
           int time=normalize(distance);
-          notas.append(""+s.getSize()+",");
-          pausa.append(""+time/100+",");
+          float notaInsertar=0,0;
+          if(s.getSize()==50)
+            notaInsertar=261.63;
+          else if(s.getSize()==35)
+            notaInsertar=329.628;
+          else if(s.getSize()==20)
+            notaInsertar=391.995;
+          //notas.append(""+s.getSize()+",");
+          notas.append(""+notaInsertar+",");
+          pausa.append(""+time+",");
           lastStar=s;
         }
       }

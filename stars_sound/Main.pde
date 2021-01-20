@@ -161,15 +161,13 @@ public class Main {
   /** Método auxiliar para obtener la cabecera Ruby que tocará la melodía ******/
   private String getCabecera() {
     StringBuilder cabecera = new StringBuilder();
-    cabecera.append("define :play_my_melody do |my_note_list, my_sleep_list|");
-    cabecera.append("\r  tick_reset(:my_melody_tick)");
-    cabecera.append("\r  my_length = my_note_list.length");
-    cabecera.append("\r  my_length.times do");
-    cabecera.append("\r    my_counter = tick(:my_melody_tick)");
-    cabecera.append("\r    play note_info(my_note_list.ring[my_counter]).midi_string");
-    cabecera.append("\r    sleep my_sleep_list.ring[my_counter]");
-    cabecera.append("\r  end");
-    cabecera.append("\rend");
+    cabecera.append("\r\nuse_bpm 10000");
+    cabecera.append("\r\nuse_synth :piano");
+    cabecera.append("\r\nmy_melody.each_with_index do |elemento, index|");
+    cabecera.append("\r\n  play hz_to_midi(elemento), release:my_sleep[index], amp:1");
+    cabecera.append("\r\n  sample :ambi_piano, amp:0.1, release:my_sleep[index]");
+    cabecera.append("\r\n  sleep(my_sleep[index])");
+    cabecera.append("\r\nend");
     return cabecera.toString();
   }
 
@@ -177,7 +175,6 @@ public class Main {
   public void saveFile(String path) {
     StarsManager st = StarsManager.getInstance();
     StringBuilder content = new StringBuilder();
-    content.append(getCabecera());
     StringBuilder notas = new StringBuilder();
     StringBuilder pausa = new StringBuilder();
     notas.append("my_melody = [");
@@ -190,13 +187,20 @@ public class Main {
         if (isFirst) {
           isFirst=false;
           lastStar=s;
-          notas.append(""+s.getSize()+",");
+          float notaInsertar=0.0;
+          if(s.getSize()==50)
+            notaInsertar=261.63;
+          else if(s.getSize()==35)
+            notaInsertar=329.628;
+          else if(s.getSize()==20)
+            notaInsertar=391.995;
+          notas.append(""+notaInsertar+",");
           pausa.append("300,");
         } else {
           int distance=calculateDistanceBetweenTwoStars(lastStar, s);
           System.out.println("Distance: "+distance);
           int time=normalize(distance);
-          float notaInsertar=0,0;
+          float notaInsertar=0.0;
           if(s.getSize()==50)
             notaInsertar=261.63;
           else if(s.getSize()==35)
@@ -210,14 +214,14 @@ public class Main {
         }
       }
     }
-    content.append("\r");
     content.append((notas.length()>13) ? notas.toString().substring(0, notas.length()-1) : "");
     content.append("]");
 
-    content.append("\r");
+    content.append("\r\n");
     content.append((pausa.length()>13) ? pausa.toString().substring(0, pausa.length()-1) : "");
     content.append("]");
-    content.append("\rplay_my_melody my_melody, my_sleep");
+    
+    content.append(getCabecera());
     
     try {
       FileWriter myWriter = new FileWriter(path);

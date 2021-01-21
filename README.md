@@ -4,3 +4,6 @@ La aplicación se ha desarrollado utilizando Processing, donde ha sido necesaria
 
 ### Diagrama de clases UML
 ![Diagrama de clases UML](StarsSound.svg)
+
+### Vídeo demostración
+[![STARS SOUND](stars_sound/data/VideoPreview.jpg)](https://www.youtube.com/watch?v=uMu6RDrMqEE)
